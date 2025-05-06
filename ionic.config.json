@@ -1,0 +1,7 @@
+{
+  "name": "schnitzel-jagd",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
