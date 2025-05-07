@@ -16,4 +16,12 @@ export const routes: Routes = [
     path: 'shake-task',
     loadComponent: () => import('./pages/shake-task/shake-task.page').then( m => m.ShakeTaskPage)
   },
+  {
+    path: 'qr-code-task',
+    loadComponent: () => import('./pages/qr-code-task/qr-code-task.page').then( m => m.QrCodeTaskPage)
+  },
+  {
+    path: 'charge-task',
+    loadComponent: () => import('./pages/charge-task/charge-task.page').then( m => m.ChargeTaskPage)
+  },
 ];
