@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Resultat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-task
+    [title]="'Resultat'"
+    [subtitle]="'Glückwunsch zum Sieg!'"
+  ></app-task>
+
+  <app-result-card></app-result-card>
+</ion-content>
+
+<ion-footer class="footer">
+  <ion-button [routerLink]="['/tabs/leaderboard']">
+    Weiter zum Leaderboard
+  </ion-button>
+</ion-footer>

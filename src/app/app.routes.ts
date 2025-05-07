@@ -24,4 +24,8 @@ export const routes: Routes = [
     path: 'charge-task',
     loadComponent: () => import('./pages/charge-task/charge-task.page').then( m => m.ChargeTaskPage)
   },
+  {
+    path: 'result',
+    loadComponent: () => import('./pages/result/result.page').then( m => m.ResultPage)
+  },
 ];
