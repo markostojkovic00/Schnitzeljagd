@@ -13,11 +13,7 @@
 
 <ion-footer class="footer">
   <ion-button [routerLink]="['/tabs/start']">Weiter</ion-button>
-  <ion-button id="quit-game" fill="clear">Abbrechen</ion-button>
-  <ion-alert
-    trigger="quit-game"
-    header="Wollen Sie das Spiel wirklich beenden?"
-    [buttons]="alertButtons"
-    (didDismiss)="leaveGame($event)"
-  ></ion-alert>
+  <ion-button (click)="presentLeaveGameAlert()" fill="clear">
+    Abbrechen
+  </ion-button>
 </ion-footer>
