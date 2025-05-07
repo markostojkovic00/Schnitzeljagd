@@ -1,3 +1,12 @@
+.button {
+  flex-grow: 1;
+  display: grid;
+  align-items: center;
+  padding-right: 10vw;
+  padding-left: 10vw;
+  padding-top: 2vh;
+}
+
 .footer {
   margin-bottom: 5vh;
 }
