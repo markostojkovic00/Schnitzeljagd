@@ -6,6 +6,14 @@ import { Geolocation } from '@capacitor/geolocation';
   providedIn: 'root',
 })
 export class PermissionService {
+  async arePermissionsGranted() {
+    const cameraPermissions = await this.checkCameraPermissions();
+    const geolocationPermissions = await this.checkGeolocationPermissions();
+    return (
+      cameraPermissions === 'granted' && geolocationPermissions === 'granted'
+    );
+  }
+
   async requestCameraPermissions() {
     const permission = await Camera.requestPermissions({
       permissions: ['camera'],
