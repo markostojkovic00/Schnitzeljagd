@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { StartCardComponent } from '../start-card/start-card.component';
+import {Component} from '@angular/core';
+import {IonContent, IonHeader, IonTitle, IonToolbar} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-leaderboard',
   templateUrl: 'leaderboard.page.html',
   styleUrls: ['leaderboard.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, StartCardComponent]
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent]
 })
 export class LeaderboardPage {
 
-  constructor() {}
+  constructor() {
+  }
 
 }
