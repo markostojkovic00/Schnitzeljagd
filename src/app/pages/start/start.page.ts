@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   IonContent,
   IonHeader,
@@ -6,6 +6,7 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { StartCardComponent } from '../../components/start-card/start-card.component';
+import { PermissionService } from '../../services/permission.service';
 
 @Component({
   selector: 'app-start',
@@ -15,4 +16,11 @@ import { StartCardComponent } from '../../components/start-card/start-card.compo
 })
 export class StartPage {
   constructor() {}
+
+  private permissionService = inject(PermissionService);
+
+  async ionViewDidEnter() {
+    await this.permissionService.requestCameraPermissions();
+    await this.permissionService.requestGeolocationPermissions();
+  }
 }
