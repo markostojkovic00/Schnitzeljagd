@@ -9,12 +9,12 @@ export const routes: Routes = [
       {
         path: 'start',
         loadComponent: () =>
-          import('../start/start.page').then((m) => m.StartPage),
+          import('../pages/start/start.page').then((m) => m.StartPage),
       },
       {
         path: 'leaderboard',
         loadComponent: () =>
-          import('../leaderboard/leaderboard.page').then((m) => m.LeaderboardPage),
+          import('../pages/leaderboard/leaderboard.page').then((m) => m.LeaderboardPage),
       },
       {
         path: '',

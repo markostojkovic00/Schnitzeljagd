@@ -4,13 +4,13 @@
       Starte deine persönliche Schnitzeljagd!
     </ion-card-subtitle>
   </ion-card-header>
-  <ion-card-content class="center-text card-content">
+  <ion-card-content class="center-text card-text">
     Trage deinen Namen ein, löse spannende Aufgaben mit den Funktionen deines Geräts und sammle Schnitzel. Wenn du zu
     lange brauchst, gibt es Kartoffeln als Strafe. Meistere alle vier Aufgaben und sichere dir einen Platz im
     Online-Leaderboard. Viel Erfolg!
 
     <div class="button">
-      <ion-button>
+      <ion-button [routerLink]="['/geolocation-task']" expand="block">
         Beginnen
       </ion-button>
     </div>

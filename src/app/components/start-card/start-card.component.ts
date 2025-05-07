@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle} from "@ionic/angular/standalone";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-start-card',
@@ -10,7 +11,8 @@ import {IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle} from
     IonCardContent,
     IonCardSubtitle,
     IonCardHeader,
-    IonButton
+    IonButton,
+    RouterLink
   ]
 })
 export class StartCardComponent {
