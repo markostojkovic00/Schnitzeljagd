@@ -1,9 +1,19 @@
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {IonAlert, IonButton, IonContent, IonFooter, IonHeader, IonTitle, IonToolbar,} from '@ionic/angular/standalone';
-import {Router, RouterLink} from "@angular/router";
-import type {OverlayEventDetail} from '@ionic/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import {
+  IonAlert,
+  IonButton,
+  IonContent,
+  IonFooter,
+  IonHeader,
+  IonRouterOutlet,
+  IonTitle,
+  IonToolbar,
+  NavController,
+} from '@ionic/angular/standalone';
+import type { OverlayEventDetail } from '@ionic/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-geolocation-task',
@@ -17,10 +27,10 @@ import type {OverlayEventDetail} from '@ionic/core';
     IonToolbar,
     CommonModule,
     FormsModule,
-    IonButton,
     IonFooter,
-    RouterLink,
     IonAlert,
+    IonButton,
+    RouterLink,
   ],
 })
 export class GeolocationTaskPage {
@@ -35,12 +45,18 @@ export class GeolocationTaskPage {
     },
   ];
 
-  constructor(private router: Router) {
+  private routerOutlet = inject(IonRouterOutlet);
+
+  constructor(private navCtrl: NavController) {
+    this.routerOutlet.swipeGesture = false;
   }
 
   leaveGame(event: CustomEvent<OverlayEventDetail>) {
     if (event.detail.role === 'confirm') {
-      this.router.navigate(['/tabs/start']);
+      this.navCtrl.navigateForward('/tabs/start', {
+        animated: true,
+        animationDirection: 'back',
+      });
     }
   }
 }
