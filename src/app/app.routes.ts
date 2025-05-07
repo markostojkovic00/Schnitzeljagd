@@ -12,4 +12,8 @@ export const routes: Routes = [
         (m) => m.GeolocationTaskPage,
       ),
   },
+  {
+    path: 'shake-task',
+    loadComponent: () => import('./pages/shake-task/shake-task.page').then( m => m.ShakeTaskPage)
+  },
 ];

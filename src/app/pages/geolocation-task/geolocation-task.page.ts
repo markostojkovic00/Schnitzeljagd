@@ -1,14 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import {
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {IonAlert, IonButton, IonContent, IonFooter, IonHeader, IonTitle, IonToolbar,} from '@ionic/angular/standalone';
+import {Router, RouterLink} from "@angular/router";
+import type {OverlayEventDetail} from '@ionic/core';
 
 @Component({
   selector: 'app-geolocation-task',
@@ -22,12 +17,30 @@ import {
     IonToolbar,
     CommonModule,
     FormsModule,
-    IonButtons,
     IonButton,
+    IonFooter,
+    RouterLink,
+    IonAlert,
   ],
 })
-export class GeolocationTaskPage implements OnInit {
-  constructor() {}
+export class GeolocationTaskPage {
+  public alertButtons = [
+    {
+      text: 'Abbrechen',
+      role: 'cancel',
+    },
+    {
+      text: 'Ja',
+      role: 'confirm',
+    },
+  ];
 
-  ngOnInit() {}
+  constructor(private router: Router) {
+  }
+
+  leaveGame(event: CustomEvent<OverlayEventDetail>) {
+    if (event.detail.role === 'confirm') {
+      this.router.navigate(['/tabs/start']);
+    }
+  }
 }

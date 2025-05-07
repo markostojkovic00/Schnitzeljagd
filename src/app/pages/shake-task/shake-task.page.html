@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Aufgabe 1</ion-title>
+    <ion-title>Aufgabe 2</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Aufgabe 1</ion-title>
+      <ion-title size="large">Aufgabe 2</ion-title>
     </ion-toolbar>
     <ion-toolbar>
       <div class="subtitle">
@@ -22,11 +22,5 @@
   <ion-button [routerLink]="['/shake-task']">
     Weiter
   </ion-button>
-  <ion-button id="quit-game" fill="clear">Abbrechen</ion-button>
-  <ion-alert
-    trigger="quit-game"
-    header="Wollen Sie das Spiel wirklich beenden?"
-    [buttons]="alertButtons"
-    (didDismiss)="leaveGame($event)"
-  ></ion-alert>
+  <ion-button fill="clear">Abbrechen</ion-button>
 </ion-footer>
