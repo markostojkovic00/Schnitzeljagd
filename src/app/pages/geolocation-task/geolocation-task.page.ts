@@ -12,8 +12,9 @@ import {
   IonToolbar,
   NavController,
 } from '@ionic/angular/standalone';
-import type { OverlayEventDetail } from '@ionic/core';
 import { RouterLink } from '@angular/router';
+import { OverlayEventDetail } from '@ionic/core';
+import { TaskComponent } from '../../components/task/task.component';
 
 @Component({
   selector: 'app-geolocation-task',
@@ -21,19 +22,21 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./geolocation-task.page.scss'],
   standalone: true,
   imports: [
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     IonFooter,
-    IonAlert,
     IonButton,
     RouterLink,
+    TaskComponent,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonAlert,
   ],
 })
 export class GeolocationTaskPage {
+  private routerOutlet = inject(IonRouterOutlet);
   public alertButtons = [
     {
       text: 'Abbrechen',
@@ -44,8 +47,6 @@ export class GeolocationTaskPage {
       role: 'confirm',
     },
   ];
-
-  private routerOutlet = inject(IonRouterOutlet);
 
   constructor(private navCtrl: NavController) {
     this.routerOutlet.swipeGesture = false;

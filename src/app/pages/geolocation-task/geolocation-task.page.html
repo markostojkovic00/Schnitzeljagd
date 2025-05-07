@@ -5,17 +5,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Aufgabe 1</ion-title>
-    </ion-toolbar>
-    <ion-toolbar>
-      <div class="subtitle">
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet
-        consectetur adipiscing elit quisque faucibus.
-      </div>
-    </ion-toolbar>
-  </ion-header>
+  <app-task
+    [title]="'Aufgabe 1'"
+    [subtitle]="'Lorem Ipsum dolor sit amet'"
+  ></app-task>
 </ion-content>
 
 <ion-footer class="footer">
