@@ -1,6 +1,6 @@
 import { LeaderboardEntry } from './models/LearderboardEntry';
 
-export const LEADERBOARDENTRIES: LeaderboardEntry[] = [
+export const LEADERBOARD_ENTRIES: LeaderboardEntry[] = [
   {
     id: 1,
     player: { id: 1, name: 'Laurin' },

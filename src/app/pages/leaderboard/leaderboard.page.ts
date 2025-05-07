@@ -7,7 +7,7 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { LeaderboardEntry } from '../../models/LearderboardEntry';
-import { LEADERBOARDENTRIES } from '../../mock-leaderboard-entries';
+import { LEADERBOARD_ENTRIES } from '../../mock-leaderboard-entries';
 import { LeaderboardEntryComponent } from '../../components/leaderboard-entry/leaderboard-entry.component';
 
 @Component({
@@ -25,7 +25,7 @@ import { LeaderboardEntryComponent } from '../../components/leaderboard-entry/le
 })
 export class LeaderboardPage {
   pageTitle = 'Leaderboard';
-  leaderboardEntries: LeaderboardEntry[] = LEADERBOARDENTRIES;
+  leaderboardEntries: LeaderboardEntry[] = LEADERBOARD_ENTRIES;
 
   constructor() {}
 }
