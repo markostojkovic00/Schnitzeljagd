@@ -10,7 +10,7 @@ export const LEADERBOARD_ENTRIES: LeaderboardEntry[] = [
     potatoes: 1,
   },
   {
-    id: 1,
+    id: 2,
     player: { id: 2, name: 'Marko' },
     time: 80,
     date: new Date('2025-05-07'),
@@ -18,7 +18,7 @@ export const LEADERBOARD_ENTRIES: LeaderboardEntry[] = [
     potatoes: 0,
   },
   {
-    id: 1,
+    id: 3,
     player: { id: 3, name: 'Leon' },
     time: 80,
     date: new Date('2025-05-06'),
