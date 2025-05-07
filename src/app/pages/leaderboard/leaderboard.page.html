@@ -1,13 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> {{pageTitle}} </ion-title>
+    <ion-title>{{pageTitle}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">{{ pageTitle }}</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    @for (entry of leaderboardEntries; track entry.id) {
+    <app-leaderboard-entry [entry]="entry"></app-leaderboard-entry>
+    }
+  </ion-list>
 </ion-content>
