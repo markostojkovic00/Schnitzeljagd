@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { IonCard, IonCardContent } from '@ionic/angular/standalone';
+import { LeaderboardService } from '../../services/leaderboard.service';
+import { LeaderboardEntry } from '../../models/LearderboardEntry';
 
 @Component({
   selector: 'app-result-card',
@@ -7,4 +9,16 @@ import { IonCard, IonCardContent } from '@ionic/angular/standalone';
   styleUrls: ['./result-card.component.scss'],
   imports: [IonCard, IonCardContent],
 })
-export class ResultCardComponent {}
+export class ResultCardComponent implements OnInit {
+  private leaderboardService = inject(LeaderboardService);
+  leaderboardEntry?: LeaderboardEntry;
+
+  async ngOnInit() {
+    await this.getLeaderboardEntry();
+  }
+
+  async getLeaderboardEntry() {
+    this.leaderboardEntry = await this.leaderboardService.getLastEntry();
+    console.log(this.leaderboardEntry?.date);
+  }
+}

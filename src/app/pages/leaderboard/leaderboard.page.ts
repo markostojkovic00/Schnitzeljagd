@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   IonContent,
   IonHeader,
@@ -7,8 +7,8 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { LeaderboardEntry } from '../../models/LearderboardEntry';
-import { LEADERBOARD_ENTRIES } from '../../mock-leaderboard-entries';
 import { LeaderboardEntryComponent } from '../../components/leaderboard-entry/leaderboard-entry.component';
+import { LeaderboardService } from '../../services/leaderboard.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -23,7 +23,16 @@ import { LeaderboardEntryComponent } from '../../components/leaderboard-entry/le
     LeaderboardEntryComponent,
   ],
 })
-export class LeaderboardPage {
-  pageTitle = 'Leaderboard';
-  leaderboardEntries: LeaderboardEntry[] = LEADERBOARD_ENTRIES;
+export class LeaderboardPage implements OnInit {
+  private leaderboardService = inject(LeaderboardService);
+  title = 'Leaderboard';
+  leaderboardEntries?: LeaderboardEntry[];
+
+  async ngOnInit() {
+    await this.getLeaderboardEntries();
+  }
+
+  async getLeaderboardEntries() {
+    this.leaderboardEntries = await this.leaderboardService.getEntries();
+  }
 }

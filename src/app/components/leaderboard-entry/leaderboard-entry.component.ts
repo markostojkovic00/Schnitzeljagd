@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, effect, input } from '@angular/core';
 import { LeaderboardEntry } from '../../models/LearderboardEntry';
 import { IonChip, IonItem, IonLabel, IonNote } from '@ionic/angular/standalone';
 
@@ -11,9 +11,16 @@ import { IonChip, IonItem, IonLabel, IonNote } from '@ionic/angular/standalone';
 export class LeaderboardEntryComponent {
   entry = input<LeaderboardEntry | undefined>(undefined);
 
-  formatTime(seconds: number) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
+  constructor() {
+    effect(() => {
+      console.log('the entry date is', this.entry()?.date);
+      console.log('the entry date is', typeof this.entry()?.date);
+    });
+  }
+
+  formatTime(milliseconds: number) {
+    const minutes = Math.floor(milliseconds / 60000);
+    const secs = Math.floor((milliseconds % 60000) / 1000);
     return `${minutes}min ${secs}sec`;
   }
 }

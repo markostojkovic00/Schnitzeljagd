@@ -1,21 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Resultat</ion-title>
+    <ion-title>{{ title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-task
-    [title]="'Resultat'"
-    [subtitle]="'Glückwunsch zum Sieg!'"
-  ></app-task>
+  <app-task [title]="title" [subtitle]="'Glückwunsch zum Sieg!'"></app-task>
 
   <app-result-card></app-result-card>
-  <div>{{ getLeaderboardEntry()!.player.name }}</div>
-  <div>{{ getLeaderboardEntry()!.time }}</div>
-  <div>{{ getLeaderboardEntry()!.schnitzel }}</div>
-  <div>{{ getLeaderboardEntry()!.potatoes }}</div>
-  <div>{{ getLeaderboardEntry()!.date }}</div>
 </ion-content>
 
 <ion-footer class="footer">

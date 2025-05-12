@@ -31,6 +31,7 @@ import { GameService } from '../../services/game.service';
   ],
 })
 export class ShakeTaskPage {
+  title = 'Aufgabe 2';
   private gameService = inject(GameService);
   private router = inject(Router);
 

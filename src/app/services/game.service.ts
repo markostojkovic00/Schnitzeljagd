@@ -5,7 +5,7 @@ import { PlayerBuilder } from '../models/PlayerBuilder';
 import { LeaderboardEntryBuilder } from '../models/LeaderboardEntryBuilder';
 import { Dialog } from '@capacitor/dialog';
 import { NavController } from '@ionic/angular';
-import { LeaderboardEntry } from '../models/LearderboardEntry';
+import { LeaderboardService } from './leaderboard.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,14 +13,15 @@ import { LeaderboardEntry } from '../models/LearderboardEntry';
 export class GameService {
   private router = inject(Router);
   private navCtrl = inject(NavController);
+  private leaderboardService = inject(LeaderboardService);
   player?: Player;
   time = 0;
   schnitzel = 0;
   potatoes = 0;
   gameStart?: Date;
-  leaderboardEntry?: LeaderboardEntry;
 
   async startGame(playerName: string) {
+    this.resetValues();
     this.player = PlayerBuilder.create(playerName);
     this.gameStart = new Date();
     await this.router.navigate(['/geolocation-task']);
@@ -60,22 +61,16 @@ export class GameService {
     if (!this.player) {
       throw new Error('Cannot end game: player is not defined');
     }
-
-    this.leaderboardEntry = LeaderboardEntryBuilder.create(
-      this.player,
-      this.time,
-      new Date(),
-      this.schnitzel,
-      this.potatoes
+    await this.leaderboardService.saveEntry(
+      LeaderboardEntryBuilder.create(
+        this.player,
+        this.time,
+        new Date(),
+        this.schnitzel,
+        this.potatoes
+      )
     );
-
-    this.resetValues();
-
     await this.router.navigate(['/result']);
-  }
-
-  getLeaderboardEntry() {
-    return this.leaderboardEntry;
   }
 
   private resetValues() {

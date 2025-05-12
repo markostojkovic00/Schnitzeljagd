@@ -31,6 +31,7 @@ import { Device } from '@capacitor/device';
   ],
 })
 export class ChargeTaskPage implements OnInit, OnDestroy {
+  title = 'Aufgabe 4';
   private gameService = inject(GameService);
 
   isPhoneCharging: boolean | undefined = false;

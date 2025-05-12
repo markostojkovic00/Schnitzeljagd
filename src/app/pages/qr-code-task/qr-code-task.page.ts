@@ -34,6 +34,7 @@ import { GameService } from '../../services/game.service';
   ],
 })
 export class QrCodeTaskPage {
+  title = 'Aufgabe 3';
   taskComplete: boolean = false;
   private gameService = inject(GameService);
   private toastController = inject(ToastController);

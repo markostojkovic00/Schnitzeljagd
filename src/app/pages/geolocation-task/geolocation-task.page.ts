@@ -31,6 +31,7 @@ import { GameService } from '../../services/game.service';
   ],
 })
 export class GeolocationTaskPage {
+  title = 'Aufgabe 1';
   private gameService = inject(GameService);
   private router = inject(Router);
 

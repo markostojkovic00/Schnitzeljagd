@@ -16,6 +16,7 @@ import { PermissionService } from '../../services/permission.service';
 })
 export class StartPage {
   private permissionService = inject(PermissionService);
+  title = 'Schnitzeljagd';
 
   async ionViewDidEnter() {
     await this.permissionService.requestCameraPermissions();
