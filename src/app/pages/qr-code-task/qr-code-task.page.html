@@ -12,6 +12,11 @@
 </ion-content>
 
 <ion-footer class="footer">
+  @if (taskComplete) {
   <ion-button [routerLink]="['/charge-task']">Weiter</ion-button>
+  } @else {
+  <ion-button fill="outline" (click)="showQrScanner()">Scan QR-Code</ion-button>
+  <ion-button [routerLink]="['/charge-task']">Überspringen</ion-button>
+  }
   <ion-button (click)="cancelGame()" fill="clear">Abbrechen</ion-button>
 </ion-footer>
