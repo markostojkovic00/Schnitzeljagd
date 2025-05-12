@@ -105,6 +105,6 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
   }
 
   async skipTask() {
-    await this.router.navigate(['/charge-task']);
+    await this.router.navigate(['/shake-task']);
   }
 }
