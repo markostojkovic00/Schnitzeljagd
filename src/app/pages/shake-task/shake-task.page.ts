@@ -111,6 +111,7 @@ export class ShakeTaskPage implements OnInit {
       this.shakeListener.remove();
     }
     await this.hapticService.customHaptic(ImpactStyle.Light);
+    this.gameService.skipTask();
     await this.router.navigate(['/qr-code-task']);
   }
 

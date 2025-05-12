@@ -40,6 +40,11 @@ export class GameService {
     }
   }
 
+  skipTask() {
+    this.potatoes += 1;
+    this.calculateTaskTime();
+  }
+
   completeTask(timeLimitInMilliseconds: number) {
     this.schnitzel += 1;
     if (this.calculateTaskTime() > timeLimitInMilliseconds) {
@@ -47,7 +52,7 @@ export class GameService {
     }
   }
 
-  calculateTaskTime() {
+  private calculateTaskTime() {
     if (!this.gameStart) {
       throw new Error('Cannot complete task: game start time is not defined');
     }

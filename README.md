@@ -5,17 +5,19 @@
 - [x] Aufgabe 3 (QR-Code)
 - [x] Aufgabe 4 (Handy Laden) @marko
 - [x] Daten speichern @laurin
-- [ ] Haptischen Zeichen bei Abschluss einer Aufgabe @marko
+- [x] Haptischen Zeichen bei Abschluss einer Aufgabe @marko
 - [x] Man soll die Aufgaben nicht mit Swipe gesten abbrechen können @marko
 - [x] Man soll das Spiel Abbrechen können (Direkt zum Leaderboard navigieren) 
 - [x] Man soll Aufgaben überspringen können.
 - [x] Leaderboard Resultate werden via API abgeschickt @laurin
 - [x] Scrolling entfernen 
 - [x] Leaderboard sortieren
+- [x] Das UI soll sich im Hintergrund nicht verändern, wenn man den Namen eingibt
+- [x] Cards schöner gestalten
+- [x] Beim Überspringen einer Aufgabe, sollen die Zeit und Kartoffeln richtig ausgewertet werden
 - [ ] Es soll nicht die ganze Zeit Location und Ladestatus abfragen
 - [ ] GoogleMaps oder Richtung in GPS integrieren
 - [ ] Zeiten für die Kartofffel Auswertung einstellen
-- [ ] Das UI soll sich im Hintergrund nicht verändern, wenn man den Namen eingibt
 - [ ] Chips sollen beim Leaderboard unter dem Datum sein
 - [ ] Handy drehen deaktivieren
 - [ ] Tab-Icons vertikal zentrieren
