@@ -55,21 +55,36 @@ export class ChargeTaskPage implements OnInit, OnDestroy {
     this.intervalId = setInterval(async () => {
       const status = await Device.getBatteryInfo();
       this.isPhoneCharging = status.isCharging;
+      if (this.isPhoneCharging) {
+        await this.hapticService.customHaptic(ImpactStyle.Heavy);
+        this.clearInterval();
+      }
     }, 500);
   }
 
   async cancelGame() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     await this.gameService.cancelGame();
+    this.clearInterval();
   }
 
   async completeTask() {
     await this.hapticService.customHaptic(ImpactStyle.Light);
     this.gameService.completeTask(30_000);
     await this.gameService.endGame();
+    this.clearInterval();
   }
 
   async skipTask() {
     await this.hapticService.customHaptic(ImpactStyle.Light);
     await this.gameService.endGame();
+    this.clearInterval();
+  }
+
+  clearInterval() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 }

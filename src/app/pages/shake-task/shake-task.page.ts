@@ -79,10 +79,15 @@ export class ShakeTaskPage implements OnInit {
           delay = 100;
         }
         await this.vibrateMultiple(shakeCount, intensity, delay);
+        if (newProgress >= 100) {
+          await this.hapticService.customHaptic(ImpactStyle.Heavy);
+          this.shakeListener.remove();
+        }
       }
     });
   }
   async cancelGame() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     if (this.shakeListener) {
       this.shakeListener.remove();
     }

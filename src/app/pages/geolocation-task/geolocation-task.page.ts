@@ -51,7 +51,7 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
         enableHighAccuracy: true,
         minimumUpdateInterval: 1000,
       },
-      (position: Position | null) => {
+      async (position: Position | null) => {
         this.distance.set(
           this.haversineDistance(
             {
@@ -65,6 +65,7 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
           )
         );
         if (this.distance() <= 5) {
+          await this.hapticService.customHaptic(ImpactStyle.Heavy);
           this.taskComplete = true;
         }
       }
@@ -100,6 +101,7 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
   }
 
   async cancelGame() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     await this.gameService.cancelGame();
   }
 

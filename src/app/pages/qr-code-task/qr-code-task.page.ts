@@ -56,6 +56,7 @@ export class QrCodeTaskPage {
     });
 
     if (ScanResult === 'M335@ICT-BZ') {
+      await this.hapticService.customHaptic(ImpactStyle.Heavy);
       this.taskComplete = true;
       await this.showToast('Der gescannte QR-Code ist korrekt!');
     } else {
@@ -74,6 +75,7 @@ export class QrCodeTaskPage {
   }
 
   async cancelGame() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     await this.gameService.cancelGame();
   }
 
