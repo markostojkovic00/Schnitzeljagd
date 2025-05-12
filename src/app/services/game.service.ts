@@ -33,7 +33,7 @@ export class GameService {
     });
 
     if (value) {
-      await this.navCtrl.navigateBack('/tabs/start');
+      await this.navCtrl.navigateBack('/tabs/leaderboard');
     }
   }
 

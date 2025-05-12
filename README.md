@@ -7,6 +7,6 @@
 - [ ] Daten speichern
 - [ ] Haptischen Zeichen bei Abschluss einer Aufgabe
 - [ ] Man soll die Aufgaben nicht mit Swipe gesten abbrechen können
-- [ ] Man soll das Spiel Abbrechen können (Direkt zum Leaderboard navigieren)
+- [x] Man soll das Spiel Abbrechen können (Direkt zum Leaderboard navigieren)
 - [ ] Man soll Aufgaben überspringen können.
 - [ ] Leaderboard Resultate werden via API abgeschickt 
