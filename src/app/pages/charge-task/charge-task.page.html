@@ -12,6 +12,10 @@
 </ion-content>
 
 <ion-footer class="footer">
+  @if (isPhoneCharging) {
   <ion-button [routerLink]="['/result']">Weiter</ion-button>
+  } @else {
+  <ion-button [routerLink]="['/result']">Überspringen</ion-button>
+  }
   <ion-button (click)="cancelGame()" fill="clear">Abbrechen</ion-button>
 </ion-footer>

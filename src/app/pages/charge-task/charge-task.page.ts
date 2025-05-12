@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -12,6 +12,7 @@ import {
 import { TaskComponent } from '../../components/task/task.component';
 import { RouterLink } from '@angular/router';
 import { GameService } from '../../services/game.service';
+import { Device } from '@capacitor/device';
 
 @Component({
   selector: 'app-charge-task',
@@ -31,10 +32,24 @@ import { GameService } from '../../services/game.service';
     RouterLink,
   ],
 })
-export class ChargeTaskPage {
+export class ChargeTaskPage implements OnInit {
   private gameService = inject(GameService);
 
+  isPhoneCharging: boolean | undefined = false;
+  intervalId: any;
+
   constructor() {}
+
+  async ngOnInit() {
+    await this.pollBatteryStatus();
+  }
+
+  pollBatteryStatus() {
+    this.intervalId = setInterval(async () => {
+      const status = await Device.getBatteryInfo();
+      this.isPhoneCharging = status.isCharging;
+    }, 500);
+  }
 
   async cancelGame() {
     await this.gameService.cancelGame();
