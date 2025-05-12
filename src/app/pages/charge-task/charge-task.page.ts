@@ -57,6 +57,7 @@ export class ChargeTaskPage implements OnInit, OnDestroy {
   async cancelGame() {
     await this.gameService.cancelGame();
   }
+
   async completeTask() {
     this.gameService.completeTask(30_000);
     await this.gameService.endGame();
