@@ -22,3 +22,4 @@
 - [ ] Handy drehen deaktivieren
 - [ ] Tab-Icons vertikal zentrieren
 - [ ] Der Name-Input muss befüllt werden
+- [ ] Alert hinzufügen, wenn man Überspringen möchte
