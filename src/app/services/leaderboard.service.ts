@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { LeaderboardEntry } from '../models/LearderboardEntry';
+import { GoogleFormsService } from './google-forms.service';
 
 type SerializedLeaderboardEntry = Omit<LeaderboardEntry, 'date'> & {
   date: string;
@@ -10,6 +11,7 @@ type SerializedLeaderboardEntry = Omit<LeaderboardEntry, 'date'> & {
   providedIn: 'root',
 })
 export class LeaderboardService {
+  private googleFormsService = inject(GoogleFormsService);
   private readonly storageKey = 'leaderboardEntries';
 
   async saveEntry(entry: LeaderboardEntry) {
@@ -19,6 +21,7 @@ export class LeaderboardService {
       key: this.storageKey,
       value: JSON.stringify(entries),
     });
+    await this.googleFormsService.submitToGoogleForm(entry);
   }
 
   async getEntries(): Promise<LeaderboardEntry[]> {

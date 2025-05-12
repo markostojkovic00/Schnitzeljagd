@@ -9,4 +9,12 @@
 - [x] Man soll die Aufgaben nicht mit Swipe gesten abbrechen können @marko
 - [x] Man soll das Spiel Abbrechen können (Direkt zum Leaderboard navigieren) 
 - [x] Man soll Aufgaben überspringen können.
-- [ ] Leaderboard Resultate werden via API abgeschickt @laurin 
+- [x] Leaderboard Resultate werden via API abgeschickt @laurin
+- [ ] Scrolling entfernen 
+- [ ] Es soll nicht die ganze Zeit Location und Ladestatus abfragen
+- [ ] Das UI soll sich im Hintergrund nicht verändern, wenn man den Namen eingibt
+- [ ] Chips sollen beim Leaderboard unter dem Datum sein
+- [ ] Handy drehen deaktivieren
+- [ ] Tab-Icons vertikal zentrieren
+- [ ] Der Name-Input muss befüllt werden
+- [ ] GoogleMaps oder Richtung in GPS integrieren
