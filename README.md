@@ -1,12 +1,12 @@
 ## Todos
 - [x] Name eingeben
-- [ ] Aufgabe 1 (Geolocation)
-- [ ] Aufgabe 2 (Schwenkbewegung)
-- [ ] Aufgabe 3 (QR-Code)
-- [ ] Aufgabe 4 (Handy Laden)
-- [ ] Daten speichern
-- [ ] Haptischen Zeichen bei Abschluss einer Aufgabe
-- [ ] Man soll die Aufgaben nicht mit Swipe gesten abbrechen können
-- [x] Man soll das Spiel Abbrechen können (Direkt zum Leaderboard navigieren)
+- [ ] Aufgabe 1 (Geolocation) @marko
+- [ ] Aufgabe 2 (Schwenkbewegung) @laurin
+- [x] Aufgabe 3 (QR-Code)
+- [ ] Aufgabe 4 (Handy Laden) @marko
+- [ ] Daten speichern @laurin
+- [ ] Haptischen Zeichen bei Abschluss einer Aufgabe @marko
+- [ ] Man soll die Aufgaben nicht mit Swipe gesten abbrechen können @marko
+- [x] Man soll das Spiel Abbrechen können (Direkt zum Leaderboard navigieren) 
 - [ ] Man soll Aufgaben überspringen können.
-- [ ] Leaderboard Resultate werden via API abgeschickt 
+- [ ] Leaderboard Resultate werden via API abgeschickt @laurin 
