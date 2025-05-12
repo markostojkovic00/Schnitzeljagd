@@ -35,8 +35,4 @@ export class LeaderboardService {
     const entries = await this.getEntries();
     return entries.length ? entries[entries.length - 1] : undefined;
   }
-
-  async clearEntries() {
-    await Preferences.remove({ key: this.storageKey });
-  }
 }

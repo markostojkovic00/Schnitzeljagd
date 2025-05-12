@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   IonContent,
   IonHeader,
@@ -23,12 +23,12 @@ import { LeaderboardService } from '../../services/leaderboard.service';
     LeaderboardEntryComponent,
   ],
 })
-export class LeaderboardPage implements OnInit {
+export class LeaderboardPage {
   private leaderboardService = inject(LeaderboardService);
   title = 'Leaderboard';
   leaderboardEntries?: LeaderboardEntry[];
 
-  async ngOnInit() {
+  async ionViewWillEnter() {
     await this.getLeaderboardEntries();
   }
 

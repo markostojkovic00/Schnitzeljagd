@@ -14,6 +14,7 @@ export class ResultCardComponent implements OnInit {
   private timeConverterService = inject(TimeConverterService);
   private leaderboardService = inject(LeaderboardService);
   leaderboardEntry?: LeaderboardEntry;
+  maxEmojis = 4;
 
   async ngOnInit() {
     await this.getLeaderboardEntry();
@@ -25,5 +26,9 @@ export class ResultCardComponent implements OnInit {
 
   formatTime(milliseconds: number) {
     return this.timeConverterService.formatTime(milliseconds);
+  }
+
+  repeatEmoji(count: number, emoji: string) {
+    return emoji.repeat(count);
   }
 }

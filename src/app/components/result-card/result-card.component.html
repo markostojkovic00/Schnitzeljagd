@@ -6,8 +6,20 @@
         <ion-card class="card">
           {{ formatTime(leaderboardEntry.time) }}
         </ion-card>
-        <ion-card class="card">{{ leaderboardEntry.schnitzel }}</ion-card>
-        <ion-card class="card">{{ leaderboardEntry.potatoes }}</ion-card>
+        <ion-card class="card">
+          <p>
+            {{ repeatEmoji(leaderboardEntry.schnitzel, '🍗') }}
+          </p>
+          <p class="faded">
+            {{ repeatEmoji(maxEmojis - leaderboardEntry.schnitzel, '🍗') }}
+          </p>
+        </ion-card>
+        <ion-card class="card">
+          <p>{{ repeatEmoji(leaderboardEntry.potatoes, '🥔') }}</p>
+          <p class="faded">
+            {{ repeatEmoji(maxEmojis - leaderboardEntry.potatoes, '🥔') }}
+          </p>
+        </ion-card>
       </div>
     </ion-card-content>
   }
