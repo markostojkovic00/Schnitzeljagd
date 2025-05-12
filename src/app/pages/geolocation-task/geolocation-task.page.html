@@ -9,9 +9,16 @@
     [title]="title"
     [subtitle]="'Lorem Ipsum dolor sit amet'"
   ></app-task>
+  <ion-label class="ion-text-center">
+    Entfernung: {{ distance() }} Meter
+  </ion-label>
 </ion-content>
 
 <ion-footer class="footer">
+  @if (taskComplete) {
   <ion-button (click)="completeTask()">Weiter</ion-button>
+  } @else {
+  <ion-button (click)="skipTask()">Überspringen</ion-button>
+  }
   <ion-button (click)="cancelGame()" fill="clear">Abbrechen</ion-button>
 </ion-footer>
