@@ -4,10 +4,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [scrollY]="false">
   <app-task
     [title]="title"
-    [subtitle]="'Schliesse dein Handy ans Strom an!'"
+    [subtitle]="'Gehe zur Migros neben dem Bahnhof. Vergiss jedoch nicht das Handy mitzunehmen!'"
   ></app-task>
   <ion-label class="ion-text-center">
     Entfernung: {{ distance() }} Meter
