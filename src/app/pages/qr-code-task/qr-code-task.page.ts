@@ -36,7 +36,7 @@ import { ImpactStyle } from '@capacitor/haptics';
   ],
 })
 export class QrCodeTaskPage {
-  title = 'Aufgabe 3';
+  title = 'QRious?';
   taskComplete: boolean = false;
   private gameService = inject(GameService);
   private toastController = inject(ToastController);

@@ -36,7 +36,7 @@ import { HapticService } from '../../services/haptic.service';
   ],
 })
 export class GeolocationTaskPage implements OnInit, OnDestroy {
-  title = 'Aufgabe 1';
+  title = 'GPS an!';
   private gameService = inject(GameService);
   private router = inject(Router);
   private hapticService = inject(HapticService);

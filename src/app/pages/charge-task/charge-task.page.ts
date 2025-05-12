@@ -33,7 +33,7 @@ import { HapticService } from '../../services/haptic.service';
   ],
 })
 export class ChargeTaskPage implements OnInit, OnDestroy {
-  title = 'Aufgabe 4';
+  title = 'Plug me, Baby';
   private gameService = inject(GameService);
   private hapticService = inject(HapticService);
 
