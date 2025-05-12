@@ -8,11 +8,15 @@
 <ion-content [fullscreen]="true">
   <app-task
     [title]="title"
-    [subtitle]="'Lorem Ipsum dolor sit amet'"
+    [subtitle]="'Schüttel dein Handy so fest du kannst!'"
   ></app-task>
 </ion-content>
 
 <ion-footer class="footer">
+  @if (progress() >= 100) {
   <ion-button (click)="completeTask()">Weiter</ion-button>
+  } @else {
+  <ion-button (click)="skipTask()">Überspringen</ion-button>
+  }
   <ion-button (click)="cancelGame()" fill="clear">Abbrechen</ion-button>
 </ion-footer>

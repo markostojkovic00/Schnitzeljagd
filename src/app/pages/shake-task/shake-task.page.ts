@@ -36,10 +36,11 @@ import { HapticService } from '../../services/haptic.service';
   ],
 })
 export class ShakeTaskPage implements OnInit {
-  title = 'Aufgabe 2';
+  title = 'Shake it!';
   private gameService = inject(GameService);
   private router = inject(Router);
   private hapticService = inject(HapticService);
+
   private shakeListener: any;
   progress = signal(0);
   private lastShake = Date.now();
@@ -65,15 +66,15 @@ export class ShakeTaskPage implements OnInit {
         let delay: number;
 
         if (newProgress < 40) {
-          shakeCount = 10;
+          shakeCount = 5;
           intensity = ImpactStyle.Light;
           delay = 150;
         } else if (newProgress < 80) {
-          shakeCount = 20;
+          shakeCount = 5;
           intensity = ImpactStyle.Medium;
           delay = 100;
         } else {
-          shakeCount = 20;
+          shakeCount = 5;
           intensity = ImpactStyle.Heavy;
           delay = 100;
         }
@@ -89,10 +90,19 @@ export class ShakeTaskPage implements OnInit {
   }
 
   async completeTask() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     if (this.shakeListener) {
       this.shakeListener.remove();
     }
     this.gameService.completeTask(30_000);
+    await this.router.navigate(['/qr-code-task']);
+  }
+
+  async skipTask() {
+    if (this.shakeListener) {
+      this.shakeListener.remove();
+    }
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     await this.router.navigate(['/qr-code-task']);
   }
 

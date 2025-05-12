@@ -11,7 +11,7 @@
 </ion-content>
 
 <ion-footer class="footer">
-  <ion-button [routerLink]="['/tabs/leaderboard']">
+  <ion-button (click)="hapticFeedback()" [routerLink]="['/tabs/leaderboard']">
     Weiter zum Leaderboard
   </ion-button>
 </ion-footer>

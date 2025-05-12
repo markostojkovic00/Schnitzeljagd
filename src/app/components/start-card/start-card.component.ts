@@ -9,6 +9,8 @@ import {
 import { PermissionService } from '../../services/permission.service';
 import { Dialog } from '@capacitor/dialog';
 import { GameService } from '../../services/game.service';
+import { HapticService } from '../../services/haptic.service';
+import { ImpactStyle } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-start-card',
@@ -19,8 +21,10 @@ import { GameService } from '../../services/game.service';
 export class StartCardComponent {
   private permissionService = inject(PermissionService);
   private gameService = inject(GameService);
+  private hapticService = inject(HapticService);
 
   async startGame() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     if (await this.permissionService.arePermissionsGranted()) {
       await this.openNameDialog();
     } else {
