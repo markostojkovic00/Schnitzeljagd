@@ -14,6 +14,6 @@ export class GameService {
 
   async startGame(playerName: string) {
     await this.router.navigate(['/geolocation-task']);
-    this.player = PlayerBuilder.createPlayer(playerName);
+    this.player = PlayerBuilder.create(playerName);
   }
 }

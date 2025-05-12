@@ -1,5 +1,5 @@
 ## Todos
-- [ ] Name eingeben
+- [x] Name eingeben
 - [ ] Aufgabe 1 (Geolocation)
 - [ ] Aufgabe 2 (Schwenkbewegung)
 - [ ] Aufgabe 3 (QR-Code)
