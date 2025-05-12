@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 @Component({
@@ -8,6 +8,6 @@ import { IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
   imports: [IonHeader, IonToolbar, IonTitle],
 })
 export class TaskComponent {
-  title = signal<string>('');
-  subtitle = signal<string>('');
+  title = input<string>('');
+  subtitle = input<string>('');
 }
