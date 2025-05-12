@@ -3,7 +3,9 @@
     <ion-card-content class="ion-text-center">
       <div class="name">{{ leaderboardEntry.player.name }}</div>
       <div class="card-container">
-        <ion-card class="card">{{ leaderboardEntry.time }}</ion-card>
+        <ion-card class="card">
+          {{ formatTime(leaderboardEntry.time) }}
+        </ion-card>
         <ion-card class="card">{{ leaderboardEntry.schnitzel }}</ion-card>
         <ion-card class="card">{{ leaderboardEntry.potatoes }}</ion-card>
       </div>

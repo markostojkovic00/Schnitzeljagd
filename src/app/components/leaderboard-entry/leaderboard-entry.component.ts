@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { LeaderboardEntry } from '../../models/LearderboardEntry';
 import { IonChip, IonItem, IonLabel, IonNote } from '@ionic/angular/standalone';
+import { TimeConverterService } from '../../services/time-converter.service';
 
 @Component({
   selector: 'app-leaderboard-entry',
@@ -9,11 +10,10 @@ import { IonChip, IonItem, IonLabel, IonNote } from '@ionic/angular/standalone';
   imports: [IonItem, IonLabel, IonChip, IonNote],
 })
 export class LeaderboardEntryComponent {
+  private timeConverterService = inject(TimeConverterService);
   entry = input<LeaderboardEntry | undefined>(undefined);
 
   formatTime(milliseconds: number) {
-    const minutes = Math.floor(milliseconds / 60000);
-    const secs = Math.floor((milliseconds % 60000) / 1000);
-    return `${minutes}min ${secs}sec`;
+    return this.timeConverterService.formatTime(milliseconds);
   }
 }
