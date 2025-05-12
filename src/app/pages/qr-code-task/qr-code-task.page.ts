@@ -8,13 +8,13 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
+  ToastController,
 } from '@ionic/angular/standalone';
 import { TaskComponent } from '../../components/task/task.component';
 import { RouterLink } from '@angular/router';
 import { CapacitorBarcodeScanner } from '@capacitor/barcode-scanner';
 import { Html5QrcodeSupportedFormats } from 'html5-qrcode';
 import { GameService } from '../../services/game.service';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-qr-code-task',
