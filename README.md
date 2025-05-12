@@ -10,12 +10,13 @@
 - [x] Man soll das Spiel Abbrechen können (Direkt zum Leaderboard navigieren) 
 - [x] Man soll Aufgaben überspringen können.
 - [x] Leaderboard Resultate werden via API abgeschickt @laurin
-- [ ] Scrolling entfernen 
+- [x] Scrolling entfernen 
+- [x] Leaderboard sortieren
 - [ ] Es soll nicht die ganze Zeit Location und Ladestatus abfragen
+- [ ] GoogleMaps oder Richtung in GPS integrieren
+- [ ] Zeiten für die Kartofffel Auswertung einstellen
 - [ ] Das UI soll sich im Hintergrund nicht verändern, wenn man den Namen eingibt
 - [ ] Chips sollen beim Leaderboard unter dem Datum sein
 - [ ] Handy drehen deaktivieren
 - [ ] Tab-Icons vertikal zentrieren
 - [ ] Der Name-Input muss befüllt werden
-- [ ] GoogleMaps oder Richtung in GPS integrieren
-- [x] Leaderboard sortieren
