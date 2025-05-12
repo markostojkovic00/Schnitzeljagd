@@ -4,9 +4,9 @@
 - [ ] Aufgabe 2 (Schwenkbewegung) @laurin
 - [x] Aufgabe 3 (QR-Code)
 - [ ] Aufgabe 4 (Handy Laden) @marko
-- [ ] Daten speichern @laurin
+- [x] Daten speichern @laurin
 - [ ] Haptischen Zeichen bei Abschluss einer Aufgabe @marko
-- [ ] Man soll die Aufgaben nicht mit Swipe gesten abbrechen können @marko
+- [x] Man soll die Aufgaben nicht mit Swipe gesten abbrechen können @marko
 - [x] Man soll das Spiel Abbrechen können (Direkt zum Leaderboard navigieren) 
 - [ ] Man soll Aufgaben überspringen können.
 - [ ] Leaderboard Resultate werden via API abgeschickt @laurin 

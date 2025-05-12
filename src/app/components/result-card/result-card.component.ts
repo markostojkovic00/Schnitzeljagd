@@ -19,6 +19,5 @@ export class ResultCardComponent implements OnInit {
 
   async getLeaderboardEntry() {
     this.leaderboardEntry = await this.leaderboardService.getLastEntry();
-    console.log(this.leaderboardEntry?.date);
   }
 }
