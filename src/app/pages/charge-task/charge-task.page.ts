@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -30,7 +30,7 @@ import { Device } from '@capacitor/device';
     IonFooter,
   ],
 })
-export class ChargeTaskPage implements OnInit {
+export class ChargeTaskPage implements OnInit, OnDestroy {
   private gameService = inject(GameService);
 
   isPhoneCharging: boolean | undefined = false;
@@ -39,7 +39,14 @@ export class ChargeTaskPage implements OnInit {
   constructor() {}
 
   async ngOnInit() {
-    await this.pollBatteryStatus();
+    this.pollBatteryStatus();
+  }
+
+  ngOnDestroy() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 
   pollBatteryStatus() {
