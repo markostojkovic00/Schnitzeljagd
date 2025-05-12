@@ -13,7 +13,7 @@
 
 <ion-footer class="footer">
   @if (isPhoneCharging) {
-  <ion-button [routerLink]="['/result']">Weiter</ion-button>
+  <ion-button (click)="completeTask()">Weiter</ion-button>
   } @else {
   <ion-button [routerLink]="['/result']">Überspringen</ion-button>
   }

@@ -12,6 +12,6 @@
 </ion-content>
 
 <ion-footer class="footer">
-  <ion-button [routerLink]="['/shake-task']">Weiter</ion-button>
+  <ion-button (click)="completeTask()">Weiter</ion-button>
   <ion-button (click)="cancelGame()" fill="clear">Abbrechen</ion-button>
 </ion-footer>

@@ -10,7 +10,7 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { TaskComponent } from '../../components/task/task.component';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { GameService } from '../../services/game.service';
 
 @Component({
@@ -24,7 +24,6 @@ import { GameService } from '../../services/game.service';
     IonButton,
     IonFooter,
     TaskComponent,
-    RouterLink,
     IonContent,
     IonHeader,
     IonTitle,
@@ -33,10 +32,15 @@ import { GameService } from '../../services/game.service';
 })
 export class ShakeTaskPage {
   private gameService = inject(GameService);
+  private router = inject(Router);
 
   constructor() {}
 
   async cancelGame() {
     await this.gameService.cancelGame();
+  }
+  async completeTask() {
+    this.gameService.completeTask(30_000);
+    await this.router.navigate(['/qr-code-task']);
   }
 }

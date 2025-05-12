@@ -11,7 +11,7 @@ import {
   ToastController,
 } from '@ionic/angular/standalone';
 import { TaskComponent } from '../../components/task/task.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CapacitorBarcodeScanner } from '@capacitor/barcode-scanner';
 import { Html5QrcodeSupportedFormats } from 'html5-qrcode';
 import { GameService } from '../../services/game.service';
@@ -38,10 +38,11 @@ export class QrCodeTaskPage {
   taskComplete: boolean = false;
   private gameService = inject(GameService);
   private toastController = inject(ToastController);
+  private router = inject(Router);
 
   constructor() {}
 
-  async showQrScanner() {
+  async scanQrCode() {
     const { ScanResult } = await CapacitorBarcodeScanner.scanBarcode({
       android: {},
       cameraDirection: undefined,
@@ -73,5 +74,10 @@ export class QrCodeTaskPage {
 
   async cancelGame() {
     await this.gameService.cancelGame();
+  }
+
+  async completeTask() {
+    this.gameService.completeTask(30_000);
+    await this.router.navigate(['/charge-task']);
   }
 }

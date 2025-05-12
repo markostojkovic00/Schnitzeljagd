@@ -10,7 +10,6 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { TaskComponent } from '../../components/task/task.component';
-import { RouterLink } from '@angular/router';
 import { GameService } from '../../services/game.service';
 import { Device } from '@capacitor/device';
 
@@ -29,7 +28,6 @@ import { Device } from '@capacitor/device';
     IonButton,
     TaskComponent,
     IonFooter,
-    RouterLink,
   ],
 })
 export class ChargeTaskPage implements OnInit {
@@ -53,5 +51,9 @@ export class ChargeTaskPage implements OnInit {
 
   async cancelGame() {
     await this.gameService.cancelGame();
+  }
+  async completeTask() {
+    this.gameService.completeTask(30_000);
+    await this.gameService.endGame();
   }
 }

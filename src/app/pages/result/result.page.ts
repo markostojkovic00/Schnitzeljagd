@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -12,6 +12,7 @@ import {
 import { TaskComponent } from '../../components/task/task.component';
 import { ResultCardComponent } from '../../components/result-card/result-card.component';
 import { RouterLink } from '@angular/router';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-result',
@@ -33,5 +34,11 @@ import { RouterLink } from '@angular/router';
   ],
 })
 export class ResultPage {
+  private gameService = inject(GameService);
+
   constructor() {}
+
+  getLeaderboardEntry() {
+    return this.gameService.getLeaderboardEntry();
+  }
 }
