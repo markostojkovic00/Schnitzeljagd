@@ -46,6 +46,4 @@ export class PermissionService {
       url: `App-prefs:${id}`,
     });
   }
-
-  constructor() {}
 }

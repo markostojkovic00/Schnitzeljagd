@@ -26,6 +26,4 @@ import { LeaderboardEntryComponent } from '../../components/leaderboard-entry/le
 export class LeaderboardPage {
   pageTitle = 'Leaderboard';
   leaderboardEntries: LeaderboardEntry[] = LEADERBOARD_ENTRIES;
-
-  constructor() {}
 }

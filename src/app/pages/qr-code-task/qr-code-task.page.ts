@@ -39,8 +39,6 @@ export class QrCodeTaskPage {
   private toastController = inject(ToastController);
   private router = inject(Router);
 
-  constructor() {}
-
   async scanQrCode() {
     const { ScanResult } = await CapacitorBarcodeScanner.scanBarcode({
       android: {},

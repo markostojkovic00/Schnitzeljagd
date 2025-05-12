@@ -7,6 +7,4 @@ import { IonCard, IonCardContent } from '@ionic/angular/standalone';
   styleUrls: ['./result-card.component.scss'],
   imports: [IonCard, IonCardContent],
 })
-export class ResultCardComponent {
-  constructor() {}
-}
+export class ResultCardComponent {}

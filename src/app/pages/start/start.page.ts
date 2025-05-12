@@ -15,8 +15,6 @@ import { PermissionService } from '../../services/permission.service';
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, StartCardComponent],
 })
 export class StartPage {
-  constructor() {}
-
   private permissionService = inject(PermissionService);
 
   async ionViewDidEnter() {

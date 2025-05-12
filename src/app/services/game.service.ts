@@ -20,8 +20,6 @@ export class GameService {
   gameStart?: Date;
   leaderboardEntry?: LeaderboardEntry;
 
-  constructor() {}
-
   async startGame(playerName: string) {
     this.player = PlayerBuilder.create(playerName);
     this.gameStart = new Date();

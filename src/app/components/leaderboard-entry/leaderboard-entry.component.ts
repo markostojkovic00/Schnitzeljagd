@@ -11,8 +11,6 @@ import { IonChip, IonItem, IonLabel, IonNote } from '@ionic/angular/standalone';
 export class LeaderboardEntryComponent {
   entry = input<LeaderboardEntry | undefined>(undefined);
 
-  constructor() {}
-
   formatTime(seconds: number) {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;

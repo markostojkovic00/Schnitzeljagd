@@ -10,5 +10,4 @@ import { IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 export class TaskComponent {
   @Input() title: string = '';
   @Input() subtitle: string = '';
-  constructor() {}
 }

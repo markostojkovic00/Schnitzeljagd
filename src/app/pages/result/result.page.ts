@@ -36,8 +36,6 @@ import { GameService } from '../../services/game.service';
 export class ResultPage {
   private gameService = inject(GameService);
 
-  constructor() {}
-
   getLeaderboardEntry() {
     return this.gameService.getLeaderboardEntry();
   }

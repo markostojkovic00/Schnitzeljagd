@@ -34,8 +34,6 @@ export class GeolocationTaskPage {
   private gameService = inject(GameService);
   private router = inject(Router);
 
-  constructor() {}
-
   async cancelGame() {
     await this.gameService.cancelGame();
   }

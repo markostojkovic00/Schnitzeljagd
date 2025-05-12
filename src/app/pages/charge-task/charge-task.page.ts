@@ -36,8 +36,6 @@ export class ChargeTaskPage implements OnInit, OnDestroy {
   isPhoneCharging: boolean | undefined = false;
   intervalId: any;
 
-  constructor() {}
-
   ngOnInit() {
     this.pollBatteryStatus();
   }
