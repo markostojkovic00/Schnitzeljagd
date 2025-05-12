@@ -12,6 +12,8 @@ import {
 import { TaskComponent } from '../../components/task/task.component';
 import { GameService } from '../../services/game.service';
 import { Device } from '@capacitor/device';
+import { ImpactStyle } from '@capacitor/haptics';
+import { HapticService } from '../../services/haptic.service';
 
 @Component({
   selector: 'app-charge-task',
@@ -33,6 +35,7 @@ import { Device } from '@capacitor/device';
 export class ChargeTaskPage implements OnInit, OnDestroy {
   title = 'Aufgabe 4';
   private gameService = inject(GameService);
+  private hapticService = inject(HapticService);
 
   isPhoneCharging: boolean | undefined = false;
   intervalId: any;
@@ -60,11 +63,13 @@ export class ChargeTaskPage implements OnInit, OnDestroy {
   }
 
   async completeTask() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     this.gameService.completeTask(30_000);
     await this.gameService.endGame();
   }
 
   async skipTask() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     await this.gameService.endGame();
   }
 }

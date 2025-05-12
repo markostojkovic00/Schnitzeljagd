@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 import { TaskComponent } from '../../components/task/task.component';
 import { GameService } from '../../services/game.service';
 import { Geolocation, Position } from '@capacitor/geolocation';
+import { ImpactStyle } from '@capacitor/haptics';
+import { HapticService } from '../../services/haptic.service';
 
 @Component({
   selector: 'app-geolocation-task',
@@ -33,10 +35,11 @@ import { Geolocation, Position } from '@capacitor/geolocation';
     IonLabel,
   ],
 })
-export class GeolocationTaskPage implements OnInit, OnDestroy{
+export class GeolocationTaskPage implements OnInit, OnDestroy {
   title = 'Aufgabe 1';
   private gameService = inject(GameService);
   private router = inject(Router);
+  private hapticService = inject(HapticService);
 
   private watchId: string | null = null;
   distance = signal(0);
@@ -101,11 +104,31 @@ export class GeolocationTaskPage implements OnInit, OnDestroy{
   }
 
   async completeTask() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
+    this.askForPermissionToShake();
     this.gameService.completeTask(30_000);
     await this.router.navigate(['/shake-task']);
   }
 
   async skipTask() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
+    this.askForPermissionToShake();
     await this.router.navigate(['/shake-task']);
+  }
+
+  async askForPermissionToShake() {
+    try {
+      if (
+        typeof DeviceMotionEvent !== 'undefined' &&
+        // @ts-ignore
+        DeviceMotionEvent.requestPermission
+      ) {
+        // @ts-ignore
+        await DeviceMotionEvent.requestPermission();
+      }
+    } catch (e) {
+      console.log('Permission denied:', e);
+      return;
+    }
   }
 }

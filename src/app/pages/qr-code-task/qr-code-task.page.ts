@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 import { CapacitorBarcodeScanner } from '@capacitor/barcode-scanner';
 import { Html5QrcodeSupportedFormats } from 'html5-qrcode';
 import { GameService } from '../../services/game.service';
+import { HapticService } from '../../services/haptic.service';
+import { ImpactStyle } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-qr-code-task',
@@ -38,6 +40,7 @@ export class QrCodeTaskPage {
   taskComplete: boolean = false;
   private gameService = inject(GameService);
   private toastController = inject(ToastController);
+  private hapticService = inject(HapticService);
   private router = inject(Router);
 
   async scanQrCode() {
@@ -75,11 +78,13 @@ export class QrCodeTaskPage {
   }
 
   async completeTask() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     this.gameService.completeTask(30_000);
     await this.router.navigate(['/charge-task']);
   }
 
   async skipTask() {
+    await this.hapticService.customHaptic(ImpactStyle.Light);
     await this.router.navigate(['/charge-task']);
   }
 }
