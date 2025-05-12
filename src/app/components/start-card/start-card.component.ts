@@ -6,11 +6,9 @@ import {
   IonCardHeader,
   IonCardSubtitle,
 } from '@ionic/angular/standalone';
-import { Router } from '@angular/router';
 import { PermissionService } from '../../services/permission.service';
 import { Dialog } from '@capacitor/dialog';
-import { AppLauncher } from '@capacitor/app-launcher';
-import { App } from '@capacitor/app';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-start-card',
@@ -19,30 +17,41 @@ import { App } from '@capacitor/app';
   imports: [IonCard, IonCardContent, IonCardSubtitle, IonCardHeader, IonButton],
 })
 export class StartCardComponent {
-  private router = inject(Router);
   private permissionService = inject(PermissionService);
+  private gameService = inject(GameService);
 
   async startGame() {
     if (await this.permissionService.arePermissionsGranted()) {
-      await this.router.navigate(['/geolocation-task']);
+      await this.openNameDialog();
     } else {
-      await this.openDialog();
+      await this.openPermissionsDialog();
     }
   }
 
-  async openDialog() {
+  private async openPermissionsDialog() {
     const { value } = await Dialog.confirm({
       title: 'Berechtigungs-Fehler',
-      message: `Es sind nicht alle Berechtigungen gesetzt`,
+      message: 'Es sind nicht alle Berechtigungen gesetzt',
       okButtonTitle: 'Einstellungen',
       cancelButtonTitle: 'OK',
     });
 
     if (value) {
-      const { id } = await App.getInfo();
-      await AppLauncher.openUrl({
-        url: `App-prefs:${id}`,
-      });
+      await this.permissionService.openPermissionSettings();
+    }
+  }
+
+  private async openNameDialog() {
+    const dialogResult = await Dialog.prompt({
+      title: 'Spiel Start',
+      message: 'Gib deinen Namen ein',
+      okButtonTitle: 'OK',
+      cancelButtonTitle: 'Abbrechen',
+      inputPlaceholder: 'Name',
+    });
+
+    if (!dialogResult.cancelled) {
+      await this.gameService.startGame(dialogResult.value);
     }
   }
 }

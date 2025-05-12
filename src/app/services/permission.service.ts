@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Camera } from '@capacitor/camera';
 import { Geolocation } from '@capacitor/geolocation';
+import { App } from '@capacitor/app';
+import { AppLauncher } from '@capacitor/app-launcher';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +38,13 @@ export class PermissionService {
   async checkGeolocationPermissions() {
     const permission = await Geolocation.checkPermissions();
     return permission.location;
+  }
+
+  async openPermissionSettings() {
+    const { id } = await App.getInfo();
+    await AppLauncher.openUrl({
+      url: `App-prefs:${id}`,
+    });
   }
 
   constructor() {}
