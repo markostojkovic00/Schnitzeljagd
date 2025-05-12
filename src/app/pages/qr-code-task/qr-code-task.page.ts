@@ -17,6 +17,7 @@ import { Html5QrcodeSupportedFormats } from 'html5-qrcode';
 import { GameService } from '../../services/game.service';
 import { HapticService } from '../../services/haptic.service';
 import { ImpactStyle } from '@capacitor/haptics';
+import { ConfettiService } from '../../services/confetti.service';
 
 @Component({
   selector: 'app-qr-code-task',
@@ -41,6 +42,7 @@ export class QrCodeTaskPage {
   private gameService = inject(GameService);
   private toastController = inject(ToastController);
   private hapticService = inject(HapticService);
+  private confettiService = inject(ConfettiService);
   private router = inject(Router);
 
   async scanQrCode() {
@@ -57,6 +59,7 @@ export class QrCodeTaskPage {
 
     if (ScanResult === 'M335@ICT-BZ') {
       await this.hapticService.customHaptic(ImpactStyle.Heavy);
+      this.confettiService.celebrate();
       this.taskComplete = true;
       await this.showToast('Der gescannte QR-Code ist korrekt!');
     } else {

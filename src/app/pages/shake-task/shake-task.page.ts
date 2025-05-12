@@ -16,6 +16,7 @@ import { GameService } from '../../services/game.service';
 import { Motion } from '@capacitor/motion';
 import { ImpactStyle } from '@capacitor/haptics';
 import { HapticService } from '../../services/haptic.service';
+import { ConfettiService } from '../../services/confetti.service';
 
 @Component({
   selector: 'app-shake-task',
@@ -40,6 +41,7 @@ export class ShakeTaskPage implements OnInit {
   private gameService = inject(GameService);
   private router = inject(Router);
   private hapticService = inject(HapticService);
+  private confettiService = inject(ConfettiService);
 
   private shakeListener: any;
   progress = signal(0);
@@ -82,6 +84,7 @@ export class ShakeTaskPage implements OnInit {
         if (newProgress >= 100) {
           await this.hapticService.customHaptic(ImpactStyle.Heavy);
           this.shakeListener.remove();
+          this.confettiService.celebrate();
         }
       }
     });

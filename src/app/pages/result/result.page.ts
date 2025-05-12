@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -14,6 +14,7 @@ import { ResultCardComponent } from '../../components/result-card/result-card.co
 import { RouterLink } from '@angular/router';
 import { ImpactStyle } from '@capacitor/haptics';
 import { HapticService } from '../../services/haptic.service';
+import { ConfettiService } from '../../services/confetti.service';
 
 @Component({
   selector: 'app-result',
@@ -34,10 +35,15 @@ import { HapticService } from '../../services/haptic.service';
     RouterLink,
   ],
 })
-export class ResultPage {
+export class ResultPage implements OnInit {
   private hapticService = inject(HapticService);
+  private confettiService = inject(ConfettiService);
 
   title = 'Resultat';
+
+  ngOnInit() {
+    this.confettiService.celebrateWin();
+  }
 
   async hapticFeedback() {
     await this.hapticService.customHaptic(ImpactStyle.Light);

@@ -16,6 +16,7 @@ import { GameService } from '../../services/game.service';
 import { Geolocation, Position } from '@capacitor/geolocation';
 import { ImpactStyle } from '@capacitor/haptics';
 import { HapticService } from '../../services/haptic.service';
+import { ConfettiService } from '../../services/confetti.service';
 
 @Component({
   selector: 'app-geolocation-task',
@@ -40,6 +41,7 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
   private gameService = inject(GameService);
   private router = inject(Router);
   private hapticService = inject(HapticService);
+  private confettiService = inject(ConfettiService);
 
   private watchId: string | null = null;
   distance = signal(0);
@@ -66,6 +68,7 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
         );
         if (this.distance() <= 5) {
           await this.hapticService.customHaptic(ImpactStyle.Heavy);
+          this.confettiService.celebrate();
           this.taskComplete = true;
         }
       }

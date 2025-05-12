@@ -14,6 +14,7 @@ import { GameService } from '../../services/game.service';
 import { Device } from '@capacitor/device';
 import { ImpactStyle } from '@capacitor/haptics';
 import { HapticService } from '../../services/haptic.service';
+import { ConfettiService } from '../../services/confetti.service';
 
 @Component({
   selector: 'app-charge-task',
@@ -36,6 +37,7 @@ export class ChargeTaskPage implements OnInit, OnDestroy {
   title = 'Plug me, Baby';
   private gameService = inject(GameService);
   private hapticService = inject(HapticService);
+  private confettiService = inject(ConfettiService);
 
   isPhoneCharging: boolean | undefined = false;
   intervalId: any;
@@ -58,6 +60,7 @@ export class ChargeTaskPage implements OnInit, OnDestroy {
       if (this.isPhoneCharging) {
         await this.hapticService.customHaptic(ImpactStyle.Heavy);
         this.clearInterval();
+        this.confettiService.celebrate();
       }
     }, 500);
   }
