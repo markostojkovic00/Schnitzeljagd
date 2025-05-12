@@ -1,11 +1,15 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import confetti from 'canvas-confetti';
+import { AudioService } from './audio.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConfettiService {
+  private audioService = inject(AudioService);
+
   celebrate() {
+    this.audioService.playPop();
     const end = Date.now() + 500;
     function frame() {
       confetti({
@@ -31,6 +35,7 @@ export class ConfettiService {
   }
 
   celebrateWin() {
+    this.audioService.playApplause();
     const duration = 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
