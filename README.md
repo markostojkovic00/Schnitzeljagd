@@ -18,3 +18,4 @@
 - [ ] Tab-Icons vertikal zentrieren
 - [ ] Der Name-Input muss befüllt werden
 - [ ] GoogleMaps oder Richtung in GPS integrieren
+- [x] Leaderboard sortieren

@@ -33,6 +33,13 @@ export class LeaderboardPage {
   }
 
   async getLeaderboardEntries() {
-    this.leaderboardEntries = await this.leaderboardService.getEntries();
+    this.leaderboardEntries = (await this.leaderboardService.getEntries()).sort(
+      (a, b) => {
+        if (b.schnitzel !== a.schnitzel) {
+          return b.schnitzel - a.schnitzel;
+        }
+        return a.time - b.time;
+      }
+    );
   }
 }
