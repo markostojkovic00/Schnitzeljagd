@@ -15,7 +15,7 @@
   @if (isPhoneCharging) {
   <ion-button (click)="completeTask()">Weiter</ion-button>
   } @else {
-  <ion-button [routerLink]="['/result']">Überspringen</ion-button>
+  <ion-button (click)="skipTask()">Überspringen</ion-button>
   }
   <ion-button (click)="cancelGame()" fill="clear">Abbrechen</ion-button>
 </ion-footer>

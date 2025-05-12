@@ -11,7 +11,7 @@ import {
   ToastController,
 } from '@ionic/angular/standalone';
 import { TaskComponent } from '../../components/task/task.component';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { CapacitorBarcodeScanner } from '@capacitor/barcode-scanner';
 import { Html5QrcodeSupportedFormats } from 'html5-qrcode';
 import { GameService } from '../../services/game.service';
@@ -31,7 +31,6 @@ import { GameService } from '../../services/game.service';
     IonButton,
     TaskComponent,
     IonFooter,
-    RouterLink,
   ],
 })
 export class QrCodeTaskPage {
@@ -78,6 +77,10 @@ export class QrCodeTaskPage {
 
   async completeTask() {
     this.gameService.completeTask(30_000);
+    await this.router.navigate(['/charge-task']);
+  }
+
+  async skipTask() {
     await this.router.navigate(['/charge-task']);
   }
 }

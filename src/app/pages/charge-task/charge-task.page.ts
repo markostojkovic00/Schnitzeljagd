@@ -38,7 +38,7 @@ export class ChargeTaskPage implements OnInit, OnDestroy {
 
   constructor() {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.pollBatteryStatus();
   }
 
@@ -61,6 +61,10 @@ export class ChargeTaskPage implements OnInit, OnDestroy {
   }
   async completeTask() {
     this.gameService.completeTask(30_000);
+    await this.gameService.endGame();
+  }
+
+  async skipTask() {
     await this.gameService.endGame();
   }
 }
