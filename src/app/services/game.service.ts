@@ -40,9 +40,18 @@ export class GameService {
     }
   }
 
-  skipTask() {
-    this.potatoes += 1;
-    this.calculateTaskTime();
+  async skipTask() {
+    const { value } = await Dialog.confirm({
+      title: 'Achtung',
+      message: 'Möchtest du die Aufgabe wirklich überspringen?',
+      okButtonTitle: 'Ja',
+      cancelButtonTitle: 'Nein',
+    });
+
+    if (value) {
+      this.potatoes += 1;
+      this.calculateTaskTime();
+    }
   }
 
   completeTask(timeLimitInMilliseconds: number) {

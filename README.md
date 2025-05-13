@@ -16,10 +16,11 @@
 - [x] Cards schöner gestalten
 - [x] Beim Überspringen einer Aufgabe, sollen die Zeit und Kartoffeln richtig ausgewertet werden
 - [x] Zeiten für die Kartofffel Auswertung einstellen
-- [ ] Es soll nicht die ganze Zeit Location und Ladestatus abfragen
+- [x] Es soll nicht die ganze Zeit Location und Ladestatus abfragen
 - [ ] GoogleMaps oder Richtung in GPS integrieren
 - [ ] Chips sollen beim Leaderboard unter dem Datum sein
 - [ ] Handy drehen deaktivieren
 - [ ] Tab-Icons vertikal zentrieren
 - [ ] Der Name-Input muss befüllt werden
-- [ ] Alert hinzufügen, wenn man Überspringen möchte
+- [x] Alert hinzufügen, wenn man Überspringen möchte
+- [ ] Fix Index Problem

@@ -92,7 +92,7 @@ export class QrCodeTaskPage {
 
   async skipTask() {
     await this.hapticService.customHaptic(ImpactStyle.Light);
-    this.gameService.skipTask();
+    await this.gameService.skipTask();
     await this.router.navigate(['/charge-task']);
   }
 }
