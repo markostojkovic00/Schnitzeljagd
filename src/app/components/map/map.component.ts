@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { Geolocation } from '@capacitor/geolocation';
 
@@ -7,7 +7,7 @@ import { Geolocation } from '@capacitor/geolocation';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent implements OnInit, OnDestroy {
+export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   readonly targetLat = 47.027585;
   readonly targetLng = 8.300941;
 
@@ -15,8 +15,29 @@ export class MapComponent implements OnInit, OnDestroy {
   userMarker?: L.CircleMarker;
   private watchId: string | null = null;
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      if (this.map) {
+        this.map.invalidateSize();
+      }
+    }, 200);
+  }
+
   async ngOnInit() {
     try {
+      this.watchId = await Geolocation.watchPosition(
+        {
+          enableHighAccuracy: true,
+          minimumUpdateInterval: 1000,
+        },
+        (position) => {
+          if (!position?.coords) return;
+
+          const { latitude, longitude } = position.coords;
+          this.userMarker?.setLatLng([latitude, longitude]);
+        }
+      );
+
       const { coords } = await Geolocation.getCurrentPosition();
 
       this.map = L.map('map').setView([this.targetLat, this.targetLng], 17);
@@ -45,19 +66,6 @@ export class MapComponent implements OnInit, OnDestroy {
         color: 'blue',
         fillColor: '#3880ff',
       }).addTo(this.map);
-
-      this.watchId = await Geolocation.watchPosition(
-        {
-          enableHighAccuracy: true,
-          minimumUpdateInterval: 1000,
-        },
-        (position) => {
-          if (!position?.coords) return;
-
-          const { latitude, longitude } = position.coords;
-          this.userMarker?.setLatLng([latitude, longitude]);
-        }
-      );
     } catch (err) {
       console.error('Error while fetching location:', err);
     }
