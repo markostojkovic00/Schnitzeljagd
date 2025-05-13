@@ -28,16 +28,20 @@ export class GameService {
   }
 
   async cancelGame() {
+    const value = await this.cancelGameModal();
+    if (value) {
+      await this.navCtrl.navigateBack('/tabs/leaderboard');
+    }
+  }
+
+  async cancelGameModal() {
     const { value } = await Dialog.confirm({
       title: 'Achtung',
       message: 'Möchtest du wirklich das Spiel beenden?',
       okButtonTitle: 'Ja',
       cancelButtonTitle: 'Nein',
     });
-
-    if (value) {
-      await this.navCtrl.navigateBack('/tabs/leaderboard');
-    }
+    return value;
   }
 
   async SkipTaskModal() {

@@ -18,6 +18,7 @@ import { ImpactStyle } from '@capacitor/haptics';
 import { HapticService } from '../../services/haptic.service';
 import { ConfettiService } from '../../services/confetti.service';
 import { TaskIconComponent } from '../../components/task-icon/task-icon.component';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-shake-task',
@@ -44,6 +45,7 @@ export class ShakeTaskPage implements OnInit {
   private router = inject(Router);
   private hapticService = inject(HapticService);
   private confettiService = inject(ConfettiService);
+  private navCtrl = inject(NavController);
 
   private shakeListener: any;
   progress = signal(0);
@@ -92,11 +94,14 @@ export class ShakeTaskPage implements OnInit {
     });
   }
   async cancelGame() {
-    await this.hapticService.customHaptic(ImpactStyle.Light);
-    if (this.shakeListener) {
-      this.shakeListener.remove();
+    const isCancled = await this.gameService.cancelGameModal();
+    if (isCancled) {
+      await this.hapticService.customHaptic(ImpactStyle.Light);
+      if (this.shakeListener) {
+        this.shakeListener.remove();
+      }
+      await this.navCtrl.navigateBack('/tabs/leaderboard');
     }
-    await this.gameService.cancelGame();
   }
 
   async completeTask() {
