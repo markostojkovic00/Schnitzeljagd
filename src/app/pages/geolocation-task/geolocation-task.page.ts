@@ -70,7 +70,7 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
           )
         );
         if (this.distance() <= 5) {
-          if (this.alreadyCelebrated) {
+          if (!this.alreadyCelebrated) {
             await this.hapticService.customHaptic(ImpactStyle.Heavy);
             this.confettiService.celebrate();
             this.taskComplete = true;
