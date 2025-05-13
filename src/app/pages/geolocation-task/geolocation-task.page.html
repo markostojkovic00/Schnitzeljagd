@@ -9,12 +9,13 @@
     [title]="title"
     [subtitle]="'Gehe zur Migros neben dem Bahnhof. Vergiss jedoch nicht das Handy mitzunehmen!'"
   ></app-task>
-  <ion-label class="ion-text-center">
-    Entfernung: {{ distance() }} Meter
-  </ion-label>
+  <app-map class="map"></app-map>
 </ion-content>
 
 <ion-footer class="footer">
+  <ion-label class="ion-text-center ion-margin-bottom">
+    Entfernung: {{ distance() }} Meter
+  </ion-label>
   @if (taskComplete) {
   <ion-button (click)="completeTask()">Weiter</ion-button>
   } @else {

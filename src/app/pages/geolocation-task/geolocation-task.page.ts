@@ -17,6 +17,7 @@ import { Geolocation, Position } from '@capacitor/geolocation';
 import { ImpactStyle } from '@capacitor/haptics';
 import { HapticService } from '../../services/haptic.service';
 import { ConfettiService } from '../../services/confetti.service';
+import { MapComponent } from '../../components/map/map.component';
 
 @Component({
   selector: 'app-geolocation-task',
@@ -34,6 +35,7 @@ import { ConfettiService } from '../../services/confetti.service';
     IonTitle,
     IonContent,
     IonLabel,
+    MapComponent,
   ],
 })
 export class GeolocationTaskPage implements OnInit, OnDestroy {
@@ -43,6 +45,7 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
   private hapticService = inject(HapticService);
   private confettiService = inject(ConfettiService);
 
+  alreadyCelebrated: boolean = false;
   private watchId: string | null = null;
   distance = signal(0);
   taskComplete: boolean = false;
@@ -67,9 +70,12 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
           )
         );
         if (this.distance() <= 5) {
-          await this.hapticService.customHaptic(ImpactStyle.Heavy);
-          this.confettiService.celebrate();
-          this.taskComplete = true;
+          if (this.alreadyCelebrated) {
+            await this.hapticService.customHaptic(ImpactStyle.Heavy);
+            this.confettiService.celebrate();
+            this.taskComplete = true;
+            this.alreadyCelebrated = true;
+          }
         }
       }
     );
