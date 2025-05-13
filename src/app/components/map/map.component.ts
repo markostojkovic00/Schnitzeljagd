@@ -19,14 +19,11 @@ export class MapComponent implements OnInit, OnDestroy {
     try {
       const { coords } = await Geolocation.getCurrentPosition();
 
-      this.map = L.map('map').setView([this.targetLat, this.targetLng], 16);
+      this.map = L.map('map').setView([this.targetLat, this.targetLng], 17);
 
       L.tileLayer(
         'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
         {
-          attribution:
-            '&copy; OpenStreetMap &copy; <a href="https://carto.com/">CARTO</a>',
-          subdomains: 'abcd',
           maxZoom: 20,
         }
       ).addTo(this.map);
@@ -43,10 +40,10 @@ export class MapComponent implements OnInit, OnDestroy {
         .openPopup();
 
       this.userMarker = L.circleMarker([coords.latitude, coords.longitude], {
-        radius: 8,
+        radius: 9,
+        fillOpacity: 1,
         color: 'blue',
         fillColor: '#3880ff',
-        fillOpacity: 0.8,
       }).addTo(this.map);
 
       this.watchId = await Geolocation.watchPosition(
