@@ -17,6 +17,7 @@ import { Motion } from '@capacitor/motion';
 import { ImpactStyle } from '@capacitor/haptics';
 import { HapticService } from '../../services/haptic.service';
 import { ConfettiService } from '../../services/confetti.service';
+import { TaskIconComponent } from '../../components/task-icon/task-icon.component';
 
 @Component({
   selector: 'app-shake-task',
@@ -34,6 +35,7 @@ import { ConfettiService } from '../../services/confetti.service';
     IonTitle,
     IonToolbar,
     IonProgressBar,
+    TaskIconComponent,
   ],
 })
 export class ShakeTaskPage implements OnInit {

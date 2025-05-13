@@ -18,6 +18,7 @@ import { GameService } from '../../services/game.service';
 import { HapticService } from '../../services/haptic.service';
 import { ImpactStyle } from '@capacitor/haptics';
 import { ConfettiService } from '../../services/confetti.service';
+import { TaskIconComponent } from '../../components/task-icon/task-icon.component';
 
 @Component({
   selector: 'app-qr-code-task',
@@ -34,6 +35,7 @@ import { ConfettiService } from '../../services/confetti.service';
     IonButton,
     TaskComponent,
     IonFooter,
+    TaskIconComponent,
   ],
 })
 export class QrCodeTaskPage {

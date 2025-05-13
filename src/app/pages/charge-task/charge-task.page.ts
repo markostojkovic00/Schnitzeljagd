@@ -15,6 +15,7 @@ import { Device } from '@capacitor/device';
 import { ImpactStyle } from '@capacitor/haptics';
 import { HapticService } from '../../services/haptic.service';
 import { ConfettiService } from '../../services/confetti.service';
+import { TaskIconComponent } from '../../components/task-icon/task-icon.component';
 
 @Component({
   selector: 'app-charge-task',
@@ -31,6 +32,7 @@ import { ConfettiService } from '../../services/confetti.service';
     IonButton,
     TaskComponent,
     IonFooter,
+    TaskIconComponent,
   ],
 })
 export class ChargeTaskPage implements OnInit, OnDestroy {
