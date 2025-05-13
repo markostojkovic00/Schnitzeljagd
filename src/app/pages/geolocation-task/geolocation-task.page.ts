@@ -111,7 +111,7 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
   async completeTask() {
     await this.hapticService.customHaptic(ImpactStyle.Light);
     this.askForPermissionToShake();
-    this.gameService.completeTask(30_000);
+    this.gameService.completeTask(180_000);
     await this.router.navigate(['/shake-task']);
   }
 

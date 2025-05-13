@@ -15,9 +15,9 @@
 - [x] Das UI soll sich im Hintergrund nicht verändern, wenn man den Namen eingibt
 - [x] Cards schöner gestalten
 - [x] Beim Überspringen einer Aufgabe, sollen die Zeit und Kartoffeln richtig ausgewertet werden
+- [x] Zeiten für die Kartofffel Auswertung einstellen
 - [ ] Es soll nicht die ganze Zeit Location und Ladestatus abfragen
 - [ ] GoogleMaps oder Richtung in GPS integrieren
-- [ ] Zeiten für die Kartofffel Auswertung einstellen
 - [ ] Chips sollen beim Leaderboard unter dem Datum sein
 - [ ] Handy drehen deaktivieren
 - [ ] Tab-Icons vertikal zentrieren
