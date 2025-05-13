@@ -109,12 +109,15 @@ export class ShakeTaskPage implements OnInit {
   }
 
   async skipTask() {
-    if (this.shakeListener) {
-      this.shakeListener.remove();
-    }
     await this.hapticService.customHaptic(ImpactStyle.Light);
-    await this.gameService.skipTask();
-    await this.router.navigate(['/qr-code-task']);
+    const isSkipped = await this.gameService.SkipTaskModal();
+    if (isSkipped) {
+      if (this.shakeListener) {
+        this.shakeListener.remove();
+      }
+      await this.gameService.skipTask();
+      await this.router.navigate(['/qr-code-task']);
+    }
   }
 
   async vibrateMultiple(times: number, intensity: ImpactStyle, delay: number) {

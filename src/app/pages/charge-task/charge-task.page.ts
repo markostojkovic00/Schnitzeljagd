@@ -82,8 +82,11 @@ export class ChargeTaskPage implements OnInit, OnDestroy {
 
   async skipTask() {
     await this.hapticService.customHaptic(ImpactStyle.Light);
-    await this.gameService.skipTask();
-    await this.gameService.endGame();
+    const isSkipped = await this.gameService.SkipTaskModal();
+    if (isSkipped) {
+      await this.gameService.skipTask();
+      await this.gameService.endGame();
+    }
     this.clearInterval();
   }
 

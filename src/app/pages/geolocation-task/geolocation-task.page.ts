@@ -117,9 +117,12 @@ export class GeolocationTaskPage implements OnInit, OnDestroy {
 
   async skipTask() {
     await this.hapticService.customHaptic(ImpactStyle.Light);
-    await this.askForPermissionToShake();
-    await this.gameService.skipTask();
-    await this.router.navigate(['/shake-task']);
+    const isSkipped = await this.gameService.SkipTaskModal();
+    if (isSkipped) {
+      await this.askForPermissionToShake();
+      await this.gameService.skipTask();
+      await this.router.navigate(['/shake-task']);
+    }
   }
 
   async askForPermissionToShake() {
