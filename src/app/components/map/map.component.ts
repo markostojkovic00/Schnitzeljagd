@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { Geolocation } from '@capacitor/geolocation';
 
@@ -13,25 +13,13 @@ export class MapComponent implements OnInit, OnDestroy {
 
   map!: L.Map;
   userMarker?: L.CircleMarker;
-  distanceToTarget = signal(0);
-  canContinue = false;
   private watchId: string | null = null;
 
   async ngOnInit() {
-    this.distanceToTarget.set(0);
-    this.canContinue = false;
-
     try {
       const { coords } = await Geolocation.getCurrentPosition();
 
       this.map = L.map('map').setView([this.targetLat, this.targetLng], 16);
-
-      const customIcon = L.icon({
-        iconUrl: 'assets/icon/marker.png',
-        iconSize: [32, 32],
-        iconAnchor: [16, 32],
-        popupAnchor: [0, -32],
-      });
 
       L.tileLayer(
         'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
@@ -43,7 +31,14 @@ export class MapComponent implements OnInit, OnDestroy {
         }
       ).addTo(this.map);
 
-      L.marker([this.targetLat, this.targetLng], { icon: customIcon })
+      const markerIcon = L.icon({
+        iconUrl: 'assets/icon/marker.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32],
+      });
+
+      L.marker([this.targetLat, this.targetLng], { icon: markerIcon })
         .addTo(this.map)
         .openPopup();
 
@@ -57,8 +52,6 @@ export class MapComponent implements OnInit, OnDestroy {
       this.watchId = await Geolocation.watchPosition(
         {
           enableHighAccuracy: true,
-          timeout: 10000,
-          maximumAge: 0,
           minimumUpdateInterval: 1000,
         },
         (position) => {
@@ -66,8 +59,6 @@ export class MapComponent implements OnInit, OnDestroy {
 
           const { latitude, longitude } = position.coords;
           this.userMarker?.setLatLng([latitude, longitude]);
-
-          this.canContinue = this.distanceToTarget() < 150;
         }
       );
     } catch (err) {
@@ -75,9 +66,9 @@ export class MapComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
+  async ngOnDestroy() {
     if (this.watchId) {
-      Geolocation.clearWatch({ id: this.watchId });
+      await Geolocation.clearWatch({ id: this.watchId });
       this.watchId = null;
     }
   }
